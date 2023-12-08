@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.ImageButton
 import android.widget.SeekBar
+import android.widget.TextView
+import java.io.File
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,9 +17,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val btn_previous_song: ImageButton
-        val btn_next_song: ImageButton
-        val mediaPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.lildicky_freestyle)
+        val songTitle: TextView = findViewById(R.id.songTitle)
+        val mediaPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.viva_la_vida)
 
         val btn_pause_play_song: ImageButton = findViewById(R.id.btn_pause_play_song)
         val seekBar: SeekBar = findViewById(R.id.seekBar)
@@ -28,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         btn_pause_play_song.setOnClickListener {
             if(!mediaPlayer.isPlaying) {
                 mediaPlayer.start()
+                mediaPlayer.setLooping(true)
+                songTitle.setText("Coldplay - Viva La Vida")
                 btn_pause_play_song.setImageResource(R.drawable.btn_pause_play_state)
             } else {
                 mediaPlayer.pause()
@@ -47,6 +51,13 @@ class MainActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(p0: SeekBar?) {
             }
         })
-
+        runnable = Runnable {
+            seekBar.progress = mediaPlayer.currentPosition
+            handler.postDelayed(runnable, 1000)
+        }
+        handler.postDelayed(runnable, 1000)
+        mediaPlayer.setOnCompletionListener {
+            seekBar.progress = 0
+        }
     }
 }

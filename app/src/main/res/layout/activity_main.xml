@@ -13,8 +13,9 @@
         android:id="@+id/songTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="36sp"/>
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:fontFamily="serif"/>
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image"
         android:layout_width="300dp"
@@ -33,22 +34,8 @@
         android:gravity="center">
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_previous_song"
-            android:src="@drawable/btn_previous_song_state"
-            android:layout_height="50dp"
-            android:layout_width="50dp"
-            android:layout_gravity="center"
-            android:background="@null" />
-        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_pause_play_song"
             android:src="@drawable/pause_default"
-            android:layout_height="50dp"
-            android:layout_width="50dp"
-            android:layout_gravity="center"
-            android:background="@null" />
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_next_song"
-            android:src="@drawable/btn_next_song_state"
             android:layout_height="50dp"
             android:layout_width="50dp"
             android:layout_gravity="center"
