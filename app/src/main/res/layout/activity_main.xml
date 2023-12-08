@@ -15,11 +15,12 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textColor="@color/black"
-        android:fontFamily="serif"/>
+        android:fontFamily="@font/gothambold"/>
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="246dp"
+        android:layout_height="277dp"
         android:src="@drawable/ogrenek" />
     <SeekBar
         android:id="@+id/seekBar"

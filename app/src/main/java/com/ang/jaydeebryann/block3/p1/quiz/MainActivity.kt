@@ -1,9 +1,13 @@
 package com.ang.jaydeebryann.block3.p1.quiz
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
@@ -16,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     private var handler = Handler()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_main)
         val songTitle: TextView = findViewById(R.id.songTitle)
         val mediaPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.viva_la_vida)
@@ -23,10 +29,12 @@ class MainActivity : AppCompatActivity() {
         val btn_pause_play_song: ImageButton = findViewById(R.id.btn_pause_play_song)
         val seekBar: SeekBar = findViewById(R.id.seekBar)
 
+        seekBar.progressDrawable.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN)
+        seekBar.thumb.setColorFilter(Color.GREEN,PorterDuff.Mode.SRC_IN)
+
         seekBar.progress = 0
 
         seekBar.max = mediaPlayer.duration
-
         btn_pause_play_song.setOnClickListener {
             if(!mediaPlayer.isPlaying) {
                 mediaPlayer.start()
